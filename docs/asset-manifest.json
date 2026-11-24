@@ -1,0 +1,242 @@
+{
+  "version": 1,
+  "project": "潮生 / Chaosheng",
+  "generatedUsing": "AI Image Studio / 画境",
+  "attribution": "潮生项目贡献者 · AI Image Studio / gpt-image-2.5-sunburst",
+  "license": "CC-BY-4.0",
+  "rightsStatement": "Assets are shared under CC BY 4.0 to the extent of rights held by the contributors. Copyright status of AI-assisted works varies by jurisdiction.",
+  "sourceReference": "Original street illustration generated for this project; no personal photographs.",
+  "assets": [
+    {
+      "id": "street",
+      "title": "长堤街",
+      "path": "public/scenes/street.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 460196,
+      "sha256": "5b1722914127fb780bc48260af8736c32ea7c3d2547e53c3089831abdc3e0c38",
+      "sourceSha256": "5f6ed20ae91a8406bba1c42728c8aa3f433ea20422c486ed5c2b9898c70f5a45",
+      "generatedAt": "2026-11-24T15:59:30.116Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "58ee298a-0a95-4dc3-a48a-ab683815ac04",
+      "prompt": "Use case: illustration-story\nAsset type: full-frame background painting for an interactive picture novel, 1536x1024 landscape.\nPrimary request: establish an original Chinese seaside small town called Chaosheng at six oclock on a summer evening, a place with ordinary people and quiet lived-in details. View down a narrow stone-paved lane that slopes gently toward a ferry landing and the sea. On the left foreground is a small weathered coral-plaster secondhand bookstore with dark teal wooden shutters, an open warm-lit doorway, a box of used books outside, a little potted plant. On the right foreground is a bicycle repair shop with a faded rust-red corrugated awning, a bicycle and a plastic stool. Upper balconies have white shirts drying on lines and green plants. Further down the lane there is a tiny corner grocery, a modest ferry at the distant pier, two tiny residents going about their evening. Old two-story houses, poles and slack overhead wires, no high rise. The sea glints pale gold.\nStyle and medium: an exceptionally composed hand-painted gouache storybook illustration with dry brush marks, soft matte pigment, fine paper grain, delicate ink accents, subtle organic imperfections. Warm nostalgic but specific and grounded. Mature illustrated book aesthetic, environmental storytelling. Original visual language, no named artist reference.\nComposition: richly composed whole frame at elevated human eye level with visible depth, strong foreground on both sides and the lane receding toward the sea. Keep a navigable open lane in the lower center. Architectural forms dominate, residents are small. Horizon in the upper middle; sky takes less than one third of the frame. Beautiful coherent painted lighting.\nPalette and light: deep petrol blue shadows, muted navy, faded coral and burnt copper plaster, dusty sage plants, cream paper highlights and pale gold late sun, softly glowing amber windows. Restrained saturation, balanced warm/cool light, enough brightness to see details.\nConstraints: one single scene, edge-to-edge landscape painting with no border. No text, signs with letters, captions, UI, hotspots, logo or watermark. No modern cars, skyscrapers, science fiction or fantasy creatures. No stock photographs, no 3D render, no chibi characters. All signs are blank textured boards.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "focalPoints": {
+        "bookshop": [
+          24,
+          58
+        ],
+        "bookBox": [
+          15,
+          80
+        ],
+        "workshop": [
+          84,
+          73
+        ],
+        "stool": [
+          94,
+          85
+        ],
+        "ferry": [
+          63,
+          47
+        ]
+      }
+    },
+    {
+      "id": "bookshop",
+      "title": "旧书店",
+      "path": "public/scenes/bookshop.webp",
+      "requestedWidth": 1536,
+      "requestedHeight": 1024,
+      "generatedAt": "2026-11-24T16:05:21.166Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "eaa9447f-6d35-4d18-8026-a30524c9045b",
+      "prompt": "Use case: illustration-story. Asset type: full-frame 1536x1024 landscape environmental background painting for the original interactive picture novel Chaosheng. Input Image 1 is the original generated street painting; use it as a STYLE, PALETTE, LIGHT and architectural-material reference. Paint a fresh viewpoint of the SAME small Chinese seaside town at six oclock on a summer evening. Match the reference dry-brush gouache, matte pigment, delicate ink details, soft paper grain, richly observed ordinary life, weathered coral plaster and dark teal shutters, navy/petrol shadows, dusty sage plants, pale gold sun and warm amber lamps. Mature illustrated book aesthetic with specific lived-in details, restrained saturation, clearly painted surfaces and organic imperfections. Compose an immersive complete painting, edge-to-edge, no empty borders. Text constraints: no legible letters or words anywhere; books, labels, signs and papers have abstract shapes only. No UI, hotspots, captions, logo, watermark, collage, photograph, 3D render, fantasy creatures, modern high rises or cars. People are ordinary, naturally proportioned and visually subordinate to the environment. Keep small story props clearly distinguishable. Scene request: A warm secondhand bookstore INTERIOR, seen from the open front doorway looking diagonally toward a large window at the back right through which one can glimpse a sea lane and golden sky. Full-height weathered wooden shelves packed with old books along the left and back walls; each spine has color blocks without readable typography. A worn wooden reading desk spans the lower-center foreground. A closed small BLUE CLOTH-BOUND DIARY with a narrow elastic strap is prominently lying on the desk near lower middle-right, visually identifiable blue among warm brown books. A plain cream mug and little potted fern sit nearby. An older Chinese woman in a muted rust cardigan with gray hair loosely tied back tends a small stack of books on the left, gentle ordinary expression. Soft amber hanging lamp over the desk, diagonal gold window light, a green-shuttered window, dust motes, intimate quiet bookshop. Preserve the teal wooden frame and coral plaster material from the reference.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "referenceAsset": "street",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 434894,
+      "sha256": "416c18661200f25daef6a5361cc9c6b9574baf12b8756dcbd606483e022096c8",
+      "sourceSha256": "4c028302b70bc4664707104f2659125156d9697a48ecc870ae2927c2335be2a5",
+      "focalPoints": {
+        "diary": [
+          54,
+          81
+        ],
+        "resident": [
+          24,
+          48
+        ],
+        "window": [
+          77,
+          34
+        ]
+      }
+    },
+    {
+      "id": "workshop",
+      "title": "修车铺",
+      "path": "public/scenes/workshop.webp",
+      "requestedWidth": 1536,
+      "requestedHeight": 1024,
+      "generatedAt": "2026-11-24T16:05:21.196Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "ca0bad51-6d82-41fc-a792-a612850ce99c",
+      "prompt": "Use case: illustration-story. Asset type: full-frame 1536x1024 landscape environmental background painting for the original interactive picture novel Chaosheng. Input Image 1 is the original generated street painting; use it as a STYLE, PALETTE, LIGHT and architectural-material reference. Paint a fresh viewpoint of the SAME small Chinese seaside town at six oclock on a summer evening. Match the reference dry-brush gouache, matte pigment, delicate ink details, soft paper grain, richly observed ordinary life, weathered coral plaster and dark teal shutters, navy/petrol shadows, dusty sage plants, pale gold sun and warm amber lamps. Mature illustrated book aesthetic with specific lived-in details, restrained saturation, clearly painted surfaces and organic imperfections. Compose an immersive complete painting, edge-to-edge, no empty borders. Text constraints: no legible letters or words anywhere; books, labels, signs and papers have abstract shapes only. No UI, hotspots, captions, logo, watermark, collage, photograph, 3D render, fantasy creatures, modern high rises or cars. People are ordinary, naturally proportioned and visually subordinate to the environment. Keep small story props clearly distinguishable. Scene request: The open-front BICYCLE REPAIR SHOP from the same lane, viewed diagonally into the shop beneath a weathered rust-red corrugated awning. One old dark teal bicycle with clear spokes and wheels occupies left-center foreground, another wheel hangs on the coral-plaster wall, organized old tools and tubes along shelves. At lower right a wooden tool bench holds a distinct small BRASS BICYCLE BELL beside a red cloth and wrench, visible as an interactable object. A blue plastic stool stands near the lower center. A young Chinese mechanic about twenty in a simple off-white shirt with short dark hair sits beside the bicycle fixing its front wheel; natural casual posture. Warm small bench lamp, golden evening outside, shaded petrol-blue interior, potted plant, worn metal and real hand tools, richly painted everyday workshop.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "referenceAsset": "street",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 418552,
+      "sha256": "b2b548639f0b5d722fc15372f104df6dfa20ef2397749ef0f81ef53d2a998f67",
+      "sourceSha256": "07e919b9ae470b052d207a9cf3f18f5719c1658463a8fb510c1ec64b4bca329c",
+      "focalPoints": {
+        "bicycle": [
+          41,
+          71
+        ],
+        "bell": [
+          87,
+          74
+        ],
+        "resident": [
+          64,
+          66
+        ],
+        "stool": [
+          68,
+          92
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "title": "灯下的家",
+      "path": "public/scenes/home.webp",
+      "requestedWidth": 1536,
+      "requestedHeight": 1024,
+      "generatedAt": "2026-11-24T16:05:21.233Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "22c3f1f5-5a2f-4caf-8c36-bf5390cb9631",
+      "prompt": "Use case: illustration-story. Asset type: full-frame 1536x1024 landscape environmental background painting for the original interactive picture novel Chaosheng. Input Image 1 is the original generated street painting; use it as a STYLE, PALETTE, LIGHT and architectural-material reference. Paint a fresh viewpoint of the SAME small Chinese seaside town at six oclock on a summer evening. Match the reference dry-brush gouache, matte pigment, delicate ink details, soft paper grain, richly observed ordinary life, weathered coral plaster and dark teal shutters, navy/petrol shadows, dusty sage plants, pale gold sun and warm amber lamps. Mature illustrated book aesthetic with specific lived-in details, restrained saturation, clearly painted surfaces and organic imperfections. Compose an immersive complete painting, edge-to-edge, no empty borders. Text constraints: no legible letters or words anywhere; books, labels, signs and papers have abstract shapes only. No UI, hotspots, captions, logo, watermark, collage, photograph, 3D render, fantasy creatures, modern high rises or cars. People are ordinary, naturally proportioned and visually subordinate to the environment. Keep small story props clearly distinguishable. Scene request: A lived-in UPSTAIRS PIANO ROOM above the seaside lane. A dark warm-brown old upright piano occupies left-center with visible black and cream keys, a simple wooden stool, music sheets with purely abstract marks and no readable words. A middle-aged Chinese musician in a navy work shirt with short salt-and-pepper hair sits at the piano playing, small and natural. The right half has a wide OPEN WINDOW with dark teal shutters framing a glimpse of golden sea, the ferry pier and low rooftops, a white gauze curtain shifting gently. A chipped cream tea cup sits on the piano, a leafy potted plant near the window, a faded coral wall, a small patterned rug, very simple domestic furniture. Evening sunlight comes through the right window and softly crosses the keys, a small amber lamp glows; intimate quiet composition, detailed and clearly painted.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "referenceAsset": "street",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 332354,
+      "sha256": "c1d6ee87a91c9eb05561e7002d16defd8bf9b370b4929ccdba810448d771f576",
+      "sourceSha256": "d1f90e35896285b53b7372ba02af0fd37d946c4985eabb943ceb8f97d0e74d64",
+      "focalPoints": {
+        "piano": [
+          26,
+          73
+        ],
+        "resident": [
+          43,
+          59
+        ],
+        "window": [
+          79,
+          32
+        ],
+        "cup": [
+          34,
+          40
+        ]
+      }
+    },
+    {
+      "id": "ferry",
+      "title": "渡口",
+      "path": "public/scenes/ferry.webp",
+      "requestedWidth": 1536,
+      "requestedHeight": 1024,
+      "generatedAt": "2026-11-24T16:05:21.279Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "465fbfb6-3665-49b6-808d-66ee1adccf68",
+      "prompt": "Use case: illustration-story. Asset type: full-frame 1536x1024 landscape environmental background painting for the original interactive picture novel Chaosheng. Input Image 1 is the original generated street painting; use it as a STYLE, PALETTE, LIGHT and architectural-material reference. Paint a fresh viewpoint of the SAME small Chinese seaside town at six oclock on a summer evening. Match the reference dry-brush gouache, matte pigment, delicate ink details, soft paper grain, richly observed ordinary life, weathered coral plaster and dark teal shutters, navy/petrol shadows, dusty sage plants, pale gold sun and warm amber lamps. Mature illustrated book aesthetic with specific lived-in details, restrained saturation, clearly painted surfaces and organic imperfections. Compose an immersive complete painting, edge-to-edge, no empty borders. Text constraints: no legible letters or words anywhere; books, labels, signs and papers have abstract shapes only. No UI, hotspots, captions, logo, watermark, collage, photograph, 3D render, fantasy creatures, modern high rises or cars. People are ordinary, naturally proportioned and visually subordinate to the environment. Keep small story props clearly distinguishable. Scene request: A stone FERRY LANDING at the end of the same seaside lane, viewed along the short old pier toward a modest white and deep-teal ferry tied alongside at left-center. The ferry is close enough to show windows, rails and the gangplank. Coiled mooring rope on stone in lower-left foreground, old wooden waiting bench at center-right. At right foreground stands a male Chinese traveler in his twenties wearing a YELLOW RAINCOAT with hood down, dark hair and a dark simple travel bag beside him, gazing toward the ferry; ordinary proportions and calm slightly wistful posture, seen three-quarter back or side. An elderly ferryman in a faded blue jacket is a small figure near the gangplank. A freestanding small weathered timetable BOARD is visible near right margin; its face contains only simple abstract faded blocks, NO letters, words or numbers. Golden water, mountain silhouettes, glowing late sun, receding coral houses with teal shutters along the shore, warm stone with cool shadows, the quietly departing last ferry feeling.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "referenceAsset": "street",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 395238,
+      "sha256": "7044fd9c3df10f217fa19baa1a3bfcc477fee09e61d383b07975cbec504819bc",
+      "sourceSha256": "c877b8f76a06aa811eed1f9888a237bc2b93569434843d283ae0d3495e49bc46",
+      "focalPoints": {
+        "traveler": [
+          74,
+          61
+        ],
+        "timetable": [
+          90,
+          52
+        ],
+        "ferry": [
+          24,
+          45
+        ],
+        "rope": [
+          17,
+          79
+        ]
+      }
+    },
+    {
+      "id": "grocery",
+      "title": "小卖部",
+      "path": "public/scenes/grocery.webp",
+      "requestedWidth": 1536,
+      "requestedHeight": 1024,
+      "generatedAt": "2026-11-24T16:05:21.363Z",
+      "model": "gpt-image-2.5-sunburst",
+      "provider": "噜皮生图",
+      "taskId": "298b04b6-4e72-4dc7-ac5f-d22bbd7175ae",
+      "prompt": "Use case: illustration-story. Asset type: full-frame 1536x1024 landscape environmental background painting for the original interactive picture novel Chaosheng. Input Image 1 is the original generated street painting; use it as a STYLE, PALETTE, LIGHT and architectural-material reference. Paint a fresh viewpoint of the SAME small Chinese seaside town at six oclock on a summer evening. Match the reference dry-brush gouache, matte pigment, delicate ink details, soft paper grain, richly observed ordinary life, weathered coral plaster and dark teal shutters, navy/petrol shadows, dusty sage plants, pale gold sun and warm amber lamps. Mature illustrated book aesthetic with specific lived-in details, restrained saturation, clearly painted surfaces and organic imperfections. Compose an immersive complete painting, edge-to-edge, no empty borders. Text constraints: no legible letters or words anywhere; books, labels, signs and papers have abstract shapes only. No UI, hotspots, captions, logo, watermark, collage, photograph, 3D render, fantasy creatures, modern high rises or cars. People are ordinary, naturally proportioned and visually subordinate to the environment. Keep small story props clearly distinguishable. Scene request: A tiny CORNER GROCERY seen from just inside its open teal-framed doorway, same weathered coral-plaster seaside town. A worn white chest FREEZER with lightly frosted sliding glass top spans left foreground, recognizable as an ice-cream freezer. Shelves along back wall carry old-style glass soda bottles, colorful anonymous snack packets, tins and ordinary daily goods, all labels are ABSTRACT without readable letters. A simple wooden sales counter is in right-center foreground; on its front edge lies a clearly visible small CREAM PAPER STAR folded from a RECEIPT, alongside a plain short paper receipt with abstract marks and no text. A young adult Chinese shopkeeper woman around twenty, dark hair in a loose ponytail, off-white T-shirt and faded coral apron, stands behind the counter smiling quietly. A blue plastic stool sits beside the doorway at lower-right. Warm lamp, a hanging bead curtain, a small plant, the open door looks to a sliver of sea lane in golden evening light. Calm, specific, lived-in, richly composed painting.",
+      "negativePrompt": "text,letters,watermarks,logos,interface,collage,frame,photograph,3d render",
+      "referenceAsset": "street",
+      "status": "ready",
+      "license": "CC-BY-4.0",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 370022,
+      "sha256": "cf059b52d4f947547b51e09ce314c98c30a06e92632968dbf3c641d90b42e0a1",
+      "sourceSha256": "e440546af35f17deb000e6ad9c48867da01c4695f58a021f7d089a6ac8acabac",
+      "focalPoints": {
+        "paperStar": [
+          64,
+          70
+        ],
+        "resident": [
+          55,
+          40
+        ],
+        "freezer": [
+          21,
+          73
+        ],
+        "stool": [
+          85,
+          90
+        ]
+      }
+    }
+  ]
+}

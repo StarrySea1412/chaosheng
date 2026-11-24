@@ -1,0 +1,23 @@
+{
+  "name": "chaosheng",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A small seaside town you can walk into. An open-source interactive picture novel.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/verify-browser.mjs",
+    "check": "node scripts/check.mjs",
+    "verify": "npm run test && npm run check && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "1.65.1"
+  }
+}
