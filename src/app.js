@@ -1,6 +1,7 @@
 import { WORLD } from './world.js';
 import { SAVE_KEY, createState, sanitizeState, reduce, getSceneView, localDateKey } from './engine.js';
 import { createAmbience } from './sound.js';
+import { sceneImagePath, ACTION_ART } from './art.js';
 
 const SOURCE_URL = 'https://github.com/StarrySea1412/chaosheng';
 const TIME_NAMES = ['夕阳未落', '蓝调时分', '灯火渐暖'];
@@ -33,6 +34,7 @@ let saveWorks = true;
 try { state = sanitizeState(localStorage.getItem(SAVE_KEY)); } catch { state = createState(); saveWorks = false; }
 let tab = 'now';
 let toastTimer;
+let momentImage=null;
 const ambience = createAmbience();
 
 document.querySelector('#app').innerHTML = `
@@ -43,6 +45,7 @@ document.querySelector('#app').innerHTML = `
         <span class="brand-name">潮生<span>DUSK TOWN</span></span>
       </a>
       <nav class="header-links" aria-label="小城信息">
+        <a class="album-link" href="./gallery.html">小城画册</a>
         <button class="text-button about-button" data-about aria-label="关于小城"><span class="about-label">关于小城</span><span class="about-symbol" aria-hidden="true">i</span></button>
         <button class="sound-button" data-sound aria-pressed="false">${icon('mute')}<span>听海风</span></button>
         <a class="source-link" href="${SOURCE_URL}" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看开源项目">${icon('github')}<span>GitHub</span>${icon('arrow', 'external-arrow')}</a>
@@ -69,8 +72,8 @@ document.querySelector('#app').innerHTML = `
             <div class="scene-place"><span id="scene-number" class="scene-number"></span><h2 id="scene-title"></h2><span id="scene-subtitle" class="scene-subtitle"></span></div>
             <div class="scene-clock"><span class="live-dot"></span><span id="day-label"></span><span class="clock-divider">/</span><time id="clock-label"></time></div>
           </div>
-          <div class="scene-frame" id="scene-frame" data-time="0" data-weather="clear">
-            <img id="scene-image" class="scene-image" src="./public/scenes/${state.location}.webp" alt="" width="1536" height="1024" fetchpriority="high" draggable="false" />
+          <div class="scene-frame" id="scene-frame" data-time="0" data-weather="clear" data-art-mode="painted">
+            <img id="scene-image" class="scene-image" src="${sceneImagePath(state)}" alt="" width="1536" height="1024" fetchpriority="high" draggable="false" />
             <div class="light-overlay" aria-hidden="true"></div>
             <div class="rain-layer" aria-hidden="true"><div></div><div></div><div></div></div>
             <div class="hotspot-layer" id="hotspots"></div>
@@ -144,6 +147,7 @@ function renderStory(view) {
     <p class="note-eyebrow">${result ? 'A MOMENT TO KEEP' : 'RIGHT HERE, RIGHT NOW'}</p>
     <h3>${escape(result ? result.title : view.subtitle)}</h3>
     <p class="scene-prose">${escape(result ? result.text : view.description)}</p>
+    ${result && momentImage ? `<a class="moment-picture" href="./gallery.html?image=${momentImage}" aria-label="翻开手记里的插画"><img src="./public/thumbs/${momentImage}.webp" width="480" height="320" alt="${escape(result.title)}"/><span>翻开手记里的插画 ↗</span></a>` : ''}
     ${!result ? `<div class="dialogue"><span class="speaker-name"><span></span>${escape(view.speaker)}</span><p>${escape(view.dialogue)}</p></div>` : '<div class="event-rule"><span>·</span><span>·</span><span>·</span></div>'}
     <div class="scene-actions" aria-label="在这里做点什么">${view.actions.length ? view.actions.map((action) => `<button class="action-button ${action.kind === 'primary' ? 'action-primary' : ''}" data-action="${escape(action.id)}"><span>${escape(action.label)}<small>${escape(action.hint || '')}</small></span>${icon('arrow')}</button>`).join('') : `<div class="quiet-note">这个角落的小事，都已经收好了。<br>再坐一会儿，或去别处看看。</div>`}</div>
     ${state.flags.chapterComplete ? `<div class="chapter-complete"><span class="completion-mark">✓</span><div><span>第一章 · 傍晚的约定</span><p>${state.flags.diaryReturned ? '日记回到了许舟手里。' : '你们约好，明天在渡口见。'}<br>还想走走的话，街上的灯都亮着。</p></div></div>` : ''}
@@ -170,12 +174,12 @@ function render() {
   elements['scene-frame'].dataset.time = state.time;
   elements['scene-frame'].dataset.weather = state.weather;
   ambience.setWeather(state.weather);
-  const source = `./public/scenes/${state.location}.webp`;
+  const source = sceneImagePath(state);
   if (elements['scene-image'].getAttribute('src') !== source) {
     elements['scene-image'].setAttribute('src', source);
     elements['image-failure'].hidden = true;
   }
-  elements['scene-image'].alt = `${view.title}，夏日傍晚的海边小城手绘街景`;
+  elements['scene-image'].alt = `${view.title}，${TIME_NAMES[state.time]}，${state.weather==='rain'?'雨天':'晴天'}的小城手绘街景`;
   const hotspots = view.id === 'street' ? SCENE_TRAVEL : view.hotspots.filter((spot) => !['return-diary', 'keep-diary'].includes(spot.actionId));
   elements.hotspots.innerHTML = hotspots.map((spot) => `<button class="hotspot ${spot.x > 78 ? 'hotspot-right' : spot.x < 20 ? 'hotspot-left' : ''}" style="--x:${spot.x}%;--y:${spot.y}%" ${spot.location ? `data-visit="${spot.location}"` : `data-action="${escape(spot.actionId)}"`} aria-label="${escape(spot.label)}"><span class="hotspot-dot"></span><span class="hotspot-label">${escape(spot.label)} ${icon('arrow')}</span></button>`).join('');
   elements['town-nav'].innerHTML = WORLD.scenes.map((item) => `<button class="place-button ${item.id === state.location ? 'is-current' : ''} ${state.visited.includes(item.id) ? 'is-visited' : ''}" data-visit="${item.id}" ${item.id === state.location ? 'aria-current="location"' : ''}><span class="place-number">${item.number}</span><span class="place-name">${escape(item.name)}</span><span class="place-dot"></span></button>`).join('');
@@ -216,6 +220,7 @@ function dispatch(event) {
   const oldLocation = state.location;
   const journalCount = state.journal.length;
   state = next;
+  momentImage=event.type==='action' ? ACTION_ART[event.id]||null : null;
   tab = 'now';
   render();
   if (event.type === 'action' && state.journal.length > journalCount) tell('一件小事，已经放进手记。');
@@ -292,4 +297,4 @@ window.addEventListener('pageshow', reconcileDate);
 render();
 
 // A small public diagnostic hook is useful to browser tests and to story modders.
-window.duskTown = Object.freeze({ getState: () => structuredClone(state), version: '0.1.0' });
+window.duskTown = Object.freeze({ getState: () => structuredClone(state), version: '0.2.0' });

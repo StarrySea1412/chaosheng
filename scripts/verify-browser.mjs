@@ -124,6 +124,8 @@ try {
     assert.equal((await state()).weather, 'rain');
     assert.equal((await state()).time, 1);
     assert.equal((await state()).discoveries.length, 6);
+    await page.waitForFunction(()=>document.querySelector('#scene-image').complete&&document.querySelector('#scene-image').getAttribute('src').endsWith('grocery-t1-rain.webp'));
+    assert.equal(await page.locator('#scene-image').evaluate(image=>getComputedStyle(image).filter),'none');
     await page.locator('[data-sound]').click();
     assert.equal(await page.locator('[data-sound]').getAttribute('aria-pressed'), 'true');
     await page.locator('[data-sound]').click();
@@ -203,6 +205,44 @@ try {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Overflow at ${width}px`);
     }
+  });
+
+  page = await freshPage();
+  const albumUrl=new URL('gallery.html',baseUrl.endsWith('/')?baseUrl:baseUrl+'/').href;
+  await page.goto(albumUrl,{waitUntil:'networkidle'});
+  await check('the album contains all120 actual paintings and the category counts match',async()=>{
+    assert.equal(await page.locator('#album-total').textContent(),'120');
+    assert.equal(await page.locator('.album-card').count(),24);
+    for(const [category,count]of[['places',24],['story',24],['details',24],['portraits',12],['weather',36]]){
+      await page.locator(`[data-category="${category}"]`).click();
+      assert.equal(await page.locator(`[data-category="${category}"]`).getAttribute('aria-pressed'),'true');
+      assert.equal(await page.locator('.album-card').count(),Math.min(count,24));
+    }
+    await page.locator('#album-more').click();
+    assert.equal(await page.locator('.album-card').count(),36);
+    await page.locator('.album-card').last().scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>{const images=[...document.querySelectorAll('.album-card img')];const last=images.at(-1);return last.complete&&last.naturalWidth===480;});
+  });
+  await check('album lightbox turns real images by keyboard and downloads full artwork',async()=>{
+    await page.locator('.album-card').first().click();
+    await page.waitForFunction(()=>document.querySelector('#lightbox-image').complete&&document.querySelector('#lightbox-image').naturalWidth===1536);
+    const first=await page.locator('#lightbox-image').getAttribute('src');
+    await page.keyboard.press('ArrowRight');
+    assert.notEqual(await page.locator('#lightbox-image').getAttribute('src'),first);
+    await page.waitForFunction(()=>document.querySelector('#lightbox-image').complete&&document.querySelector('#lightbox-image').naturalWidth===1536);
+    const downloading=page.waitForEvent('download');await page.locator('#lightbox-download').click();
+    const downloaded=await downloading;const bytes=await readFile(await downloaded.path());
+    assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');
+    await page.keyboard.press('Escape');assert.equal(await page.locator('#album-lightbox').isVisible(),false);
+  });
+  await page.locator('[data-category="all"]').click();
+  await page.evaluate(async()=>{const images=[...document.querySelectorAll('.album-card img')];for(const image of images)image.loading='eager';await Promise.all(images.map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.onload=resolve;image.onerror=resolve;})));});
+  await screenshot('album-desktop');
+  await check('the album is readable at320px and390px without horizontal overflow',async()=>{
+    for(const width of[320,390]){await page.setViewportSize({width,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);}
+    await screenshot('album-mobile');
+    await page.locator('.album-card').first().click();assert.equal(await page.locator('#album-lightbox').isVisible(),true);
+    await page.locator('#album-close').click();
   });
 
   await check('all browser paths finish without console or script errors', async () => assert.deepEqual(errors, []));

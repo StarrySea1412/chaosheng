@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <meta name="description" content="潮生的小城画册：晴雨与灯火，新的街巷，熟悉的人，值得留住的小事。" />
+    <title>小城画册 · 潮生</title>
+    <link rel="icon" href="./public/favicon.svg" />
+    <link rel="stylesheet" href="./src/styles.css?v=0.2.0" />
+    <link rel="stylesheet" href="./src/gallery.css?v=0.2.0" />
+  </head>
+  <body class="gallery-page">
+    <a class="skip-link" href="#album-grid">翻开画册</a>
+    <div class="gallery-shell">
+      <header class="masthead">
+        <a class="brand" href="./index.html">
+          <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="13" r="6" fill="currentColor"/><path d="M5 26q8-7 17 0t17 0M5 34q8-7 17 0t17 0" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span class="brand-name">潮生<span>DUSK TOWN</span></span>
+        </a>
+        <nav class="header-links" aria-label="画册导航"><a class="album-back" href="./index.html">回小城散步 <span aria-hidden="true">↗</span></a><a href="https://github.com/StarrySea1412/chaosheng" target="_blank" rel="noopener noreferrer" class="source-link">GitHub ↗</a></nav>
+      </header>
+      <main>
+        <section class="album-intro">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> 潮生的另一页 <span class="edition">THE TOWN, IN PAGES</span></p><h1>把小城，<br class="mobile-break">一页页翻开<span class="title-dot">。</span></h1><p>抬头看灯，低头看风落在旧东西上。还有些街，你没有走过。</p></div>
+          <div class="album-total"><strong id="album-total">—</strong><span>幅小城的片刻</span></div>
+        </section>
+        <div class="album-toolbar"><div id="album-filters" class="album-filters" role="group" aria-label="选择画册内容"></div><span id="album-summary" class="album-summary" role="status"></span></div>
+        <div id="album-grid" class="album-grid" tabindex="-1" aria-label="小城插画"></div>
+        <p id="album-error" class="album-error" hidden>画册暂时没有打开。稍后回来看看，或先去小城散步。</p>
+        <div class="album-pagination"><button id="album-more" class="album-more" hidden>再翻几页 <span aria-hidden="true">↓</span></button><span id="album-page-note"></span></div>
+        <p class="album-afterword">一盏灯可以亮很多个傍晚。一个地方，也可以有很多种记得它的方式。</p>
+      </main>
+      <footer class="site-footer"><span>画境 AI Image Studio 绘制 · 插画 CC BY 4.0</span><span><a href="https://github.com/StarrySea1412/chaosheng/blob/main/docs/asset-manifest.json" target="_blank" rel="noopener noreferrer">素材与提示词 ↗</a><a href="./index.html">继续散步 ↗</a></span></footer>
+    </div>
+    <dialog id="album-lightbox" class="album-lightbox" aria-labelledby="lightbox-title">
+      <button class="album-close" id="album-close" aria-label="合上这一页">×</button>
+      <div class="lightbox-image-wrap"><img id="lightbox-image" alt="" width="1536" height="1024"/><button id="album-previous" class="lightbox-arrow lightbox-previous" aria-label="上一幅">‹</button><button id="album-next" class="lightbox-arrow lightbox-next" aria-label="下一幅">›</button></div>
+      <div class="lightbox-caption"><div><span id="lightbox-category" class="note-eyebrow"></span><h2 id="lightbox-title"></h2></div><div class="lightbox-actions"><span id="lightbox-index"></span><a id="lightbox-download" download>收下这一页 ↓</a></div></div>
+    </dialog>
+    <noscript><p class="noscript">启用 JavaScript 后，就可以翻阅这本小城画册。</p></noscript>
+    <script type="module" src="./src/gallery.js?v=0.2.0"></script>
+  </body>
+</html>

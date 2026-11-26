@@ -335,6 +335,26 @@ button:disabled {
   box-shadow:0 12px 30px -20px #54452c77
 }
 
+#scene-frame[data-art-mode="painted"] .scene-image {
+  filter:none;
+}
+#scene-frame[data-art-mode="painted"] .light-overlay,
+#scene-frame[data-art-mode="painted"] .rain-layer {
+  display:none;
+}
+.album-link {
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  white-space:nowrap;
+  color:var(--rust);
+}
+@media(max-width:760px) {
+  .header-links {gap:9px;}
+  .album-link {font-size:10px;}
+  .header-links .source-link {display:none;}
+}
+
 .scene-image {
   display:block;
   width:100%;
@@ -783,6 +803,25 @@ button:disabled {
   margin-top:18px;
   display:grid;
   gap:8px
+}
+.moment-picture {
+  display:block;
+  margin:0 0 18px;
+}
+.moment-picture img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  border-radius:2px;
+}
+.moment-picture span {
+  display:block;
+  padding-top:8px;
+  color:var(--rust);
+  font-size:9px;
+  letter-spacing:.5px;
 }
 
 .action-button {

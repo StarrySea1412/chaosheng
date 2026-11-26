@@ -8,9 +8,18 @@ import { WORLD } from '../src/world.js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(await readFile(path.join(root, 'docs/asset-manifest.json'), 'utf8'));
 const sceneIds = WORLD.scenes.map((scene) => scene.id);
-assert.equal(manifest.version, 1, 'Unsupported asset manifest version');
+assert.equal(manifest.version, 2, 'Unsupported asset manifest version');
 assert.ok(manifest.generatedUsing && manifest.attribution && manifest.sourceReference, 'Asset collection needs documented provenance');
-assert.deepEqual(manifest.assets.map((asset) => asset.id).sort(), [...sceneIds].sort(), 'Each location needs one documented image');
+assert.equal(manifest.assets.length, manifest.imageCount, 'Image count must reflect actual catalog entries');
+assert.equal(manifest.imageCount, manifest.targetCount, 'The image wave must be complete before publishing');
+assert.equal(new Set(manifest.assets.map(asset=>asset.id)).size,manifest.assets.length,'Image identities must be unique');
+assert.equal(new Set(manifest.assets.map(asset=>asset.taskId)).size,manifest.assets.length,'Generated images must come from separate tasks');
+assert.equal(new Set(manifest.assets.map(asset=>asset.sha256)).size,manifest.assets.length,'Every catalog painting must be a distinct image');
+for(const scene of sceneIds){
+  for(const time of [0,1,2])for(const weather of ['clear','rain']){
+    assert.equal(manifest.assets.filter(asset=>asset.category==='weather'&&asset.sceneId===scene&&asset.time===time&&asset.weather===weather).length,1,`A real painting is required for ${scene}/${time}/${weather}`);
+  }
+}
 
 function webpDimensions(buffer) {
   assert.equal(buffer.toString('ascii', 0, 4), 'RIFF', 'Not a RIFF image');
@@ -41,7 +50,7 @@ function webpDimensions(buffer) {
 let totalBytes = 0;
 for (const asset of manifest.assets) {
   assert.equal(asset.status, 'ready', `${asset.id} has not finished generation`);
-  assert.equal(asset.path, `public/scenes/${asset.id}.webp`, 'Asset paths must stay inside public/scenes');
+  assert.match(asset.path,/^public\/(scenes|album\/(details|portraits|story|places))\/[a-z0-9-]+\.webp$/,'Asset paths must stay inside the public image folders');
   assert.equal(asset.license, 'CC-BY-4.0');
   assert.ok(asset.model && asset.prompt && asset.generatedAt && asset.taskId, 'Missing generation provenance');
   const buffer = await readFile(path.join(root, asset.path));
@@ -51,6 +60,11 @@ for (const asset of manifest.assets) {
   assert.deepEqual(dimensions, { width: asset.width, height: asset.height }, `${asset.id} dimensions differ from manifest`);
   assert.ok(dimensions.width >= 1200 && dimensions.height >= 760, `${asset.id} is too small for the scene panel`);
   assert.ok(buffer.length < 1_200_000, `${asset.id} needs compression`);
+  assert.match(asset.thumbnail,/^public\/thumbs\/[a-z0-9-]+\.webp$/);
+  const thumbnail=await readFile(path.join(root,asset.thumbnail));
+  assert.deepEqual(webpDimensions(thumbnail),{width:480,height:320},'Gallery thumbnails must have stable dimensions');
   totalBytes += buffer.length;
 }
-console.log(`Verified ${manifest.assets.length} scene images, ${(totalBytes / 1024 / 1024).toFixed(2)} MiB, with matching provenance and SHA-256.`);
+const catalog=JSON.parse(await readFile(path.join(root,'public/gallery-catalog.json'),'utf8'));
+assert.deepEqual(catalog.assets.map(asset=>asset.id).sort(),manifest.assets.map(asset=>asset.id).sort(),'The gallery must contain all finished generated paintings');
+console.log(`Verified ${manifest.assets.length} generated paintings, ${(totalBytes / 1024 / 1024).toFixed(2)} MiB, with matching provenance, thumbnails and SHA-256.`);
